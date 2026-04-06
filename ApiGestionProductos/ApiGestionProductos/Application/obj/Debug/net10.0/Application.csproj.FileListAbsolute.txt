@@ -1,0 +1,16 @@
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\bin\Debug\net10.0\Application.deps.json
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\bin\Debug\net10.0\Application.dll
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\bin\Debug\net10.0\Application.pdb
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\bin\Debug\net10.0\Domain.dll
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\bin\Debug\net10.0\Domain.pdb
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.csproj.AssemblyReference.cache
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.AssemblyInfoInputs.cache
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.AssemblyInfo.cs
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.csproj.CoreCompileInputs.cache
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.sourcelink.json
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Applicat.44B5EDA2.Up2Date
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.dll
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\refint\Application.dll
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\Application.pdb
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\Application\obj\Debug\net10.0\ref\Application.dll

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\workspace pruebasTecnicas\\SistemaGestionProductos\\ApiGestionProductos\\ApiGestionProductos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2C61C534-D6A7-41F9-AB60-FF737559B3C6}|Data\\Data.csproj|c:\\workspace pruebastecnicas\\sistemagestionproductos\\apigestionproductos\\apigestionproductos\\data\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C61C534-D6A7-41F9-AB60-FF737559B3C6}|Data\\Data.csproj|solutionrelative:data\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\workspace pruebasTecnicas\\SistemaGestionProductos\\ApiGestionProductos\\ApiGestionProductos\\Data\\Persistence\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\Persistence\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\workspace pruebasTecnicas\\SistemaGestionProductos\\ApiGestionProductos\\ApiGestionProductos\\Data\\Persistence\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\Persistence\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T23:38:33.598Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

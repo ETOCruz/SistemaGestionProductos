@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Application/Application.csproj" />
+  <Project Path="Data/Data.csproj" />
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="Tools/Tools.csproj" />
+  <Project Path="WebApi/WebApi.csproj" />
+</Solution>

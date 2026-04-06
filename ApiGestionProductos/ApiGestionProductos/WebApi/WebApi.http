@@ -1,0 +1,43 @@
+@WebApi_HostAddress = http://localhost:5063
+@ProductsEndpoints = /api/v1/products
+
+### 1 obtenemos la lista de productos
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}
+Accept: application/json
+
+### 2 creamos un nuevo producto
+POST {{WebApi_HostAddress}}{{ProductsEndpoints}}
+Content-Type: application/json
+
+{
+  "barcode": "123456",
+  "price": 25.50,
+  "name": "naranjas",
+  "ProductDescription": "Fruta fresca",
+  "ProductQuantity": 20
+}
+
+### 3 obtenemos un producto por su id
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/46f3f79d-0488-4f61-abcd-517cce578cd4
+Accept: application/json
+
+### 4 Actualizamos un producto por su id
+PUT {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC
+Content-Type: application/json
+
+{
+  "id": "3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC",
+  "barcode": "1234563",
+  "price": 25.50,
+  "name": "naranjas",
+  "ProductDescription": "Fruta fresca",
+  "ProductQuantity": 60
+}
+
+### 5 obtenemos un producto por su barcode
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/barcode/1234563
+Accept: application/json
+
+### 6 Eliminar un producto 
+DELETE {{WebApi_HostAddress}}{{ProductsEndpoints}}/3551B68E-47EA-46CD-A199-E8E7E6E42AAA
+Accept: application/json
