@@ -290,6 +290,46 @@
         }
       }
     },
+    "/api/v1/products/categories": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Obtener todos los categorías con sus subcategorías",
+        "operationId": "GetCategories",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/products/categories/{id}/subcategories": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Obtener subcategorías por el id de la categoría",
+        "operationId": "GetSubCategories",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/orders": {
       "post": {
         "tags": [
@@ -595,42 +635,6 @@
           },
           "400": {
             "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/api/categories": {
-      "get": {
-        "tags": [
-          "WebApi"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/categories/{id}/subcategories": {
-      "get": {
-        "tags": [
-          "WebApi"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -1020,9 +1024,6 @@
     },
     {
       "name": "Orders"
-    },
-    {
-      "name": "WebApi"
     }
   ]
 }
