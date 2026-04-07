@@ -1,0 +1,9 @@
+# Visual Studio
+.vs/
+ApiGestionProductos/ApiGestionProductos/.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
