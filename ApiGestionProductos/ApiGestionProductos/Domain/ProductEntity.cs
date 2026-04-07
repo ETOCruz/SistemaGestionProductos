@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -10,12 +10,13 @@ namespace Domain
         public Guid Id { get; set; }
         public string Barcode { get; private set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-        public int ProductQuantity { get; private set; } = 0;
         public string ProductDescription { get; private set; } = string.Empty;
         public decimal Price { get; private set; } = decimal.Zero;
+        public int? SubCategoryId { get; private set; }
+        public SubCategoryEntity? SubCategory { get; private set; }
         public string ProductFullDescription => $"{Name} - {ProductDescription}";
 
-        public ProductEntity(string barcode, decimal price, string name, int productQuantity, string productDescription)
+        public ProductEntity(string barcode, decimal price, string name, string productDescription, int? subCategoryId = null)
         {
             ValidateBarcode(barcode);
             ValidatePrice(price);
@@ -26,11 +27,11 @@ namespace Domain
             Barcode = barcode.Trim().ToUpper();
             Price = price;
             Name = name.Trim();
-            ProductQuantity = productQuantity;
             ProductDescription = productDescription;
+            SubCategoryId = subCategoryId;
         }
 
-        public void UpdateProduct(string barcode, decimal price, string name, int productQuantity, string productDescription)
+        public void UpdateProduct(string barcode, decimal price, string name, string productDescription, int? subCategoryId = null)
         {
             ValidateBarcode(barcode);
             ValidatePrice(price);
@@ -40,21 +41,21 @@ namespace Domain
             Barcode = barcode.Trim().ToUpper();
             Price = price;
             Name = name.Trim();
-            ProductQuantity = productQuantity;
             ProductDescription = productDescription;
+            SubCategoryId = subCategoryId;
         }
 
         private void ValidateBarcode(string barcode)
         {
             if (string.IsNullOrWhiteSpace(barcode))
             {
-                throw new ArgumentNullException("El código no puede estar vacío.", nameof(barcode));
+                throw new ArgumentNullException("El barcode no puede estar vacío.", nameof(barcode));
             }
 
             string barcodePattern = @"^\d{5,10}$";
 
             if (!Regex.IsMatch(barcode, barcodePattern))
-                throw new ArgumentException("El formato del Barcode es inválido", nameof(barcode));
+                throw new ArgumentException("El formato del barcode es inválido", nameof(barcode));
 
         }
 

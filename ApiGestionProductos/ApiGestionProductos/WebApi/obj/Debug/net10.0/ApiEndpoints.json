@@ -1,5 +1,336 @@
 [
   {
+    "ContainingType": "WebApi.Endpoints.CategoryEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapCategoryEndpoints\u003Eb__0_0",
+    "RelativePath": "api/categories/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.CategoryEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapCategoryEndpoints\u003Eb__0_1",
+    "RelativePath": "api/categories/{id:int}/subcategories",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_0",
+    "RelativePath": "api/v1/orders/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.Orders.CreateOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.OrderResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "CreateOrder",
+    "Summary": "Crea una nueva cotizaci\u00F3n de orden."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_5",
+    "RelativePath": "api/v1/orders/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.Nullable\u00601[[Domain.Enums.OrderStatus, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.PagedResponseDto\u00601[[Application.DTOs.Orders.OrderResponseDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "GetAllOrders",
+    "Summary": "Lista todas las \u00F3rdenes registradas con paginaci\u00F3n y filtro por estatus."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_4",
+    "RelativePath": "api/v1/orders/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.OrderResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "GetOrderById",
+    "Summary": "Obtiene los detalles y estatus de una orden."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_1",
+    "RelativePath": "api/v1/orders/{id:guid}/authorize",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.AuthorizationResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 422
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "AuthorizeOrder",
+    "Summary": "Autoriza la orden validando y descontando inventario."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_3",
+    "RelativePath": "api/v1/orders/{id:guid}/pause",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.OrderResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "PauseOrder",
+    "Summary": "Cambia el estado de la orden a Pausa."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_2",
+    "RelativePath": "api/v1/orders/{id:guid}/scan",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.Orders.ScanProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.OrderResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "ScanProduct",
+    "Summary": "Registra el escaneo de un producto para el surtido."
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.OrdersEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapOrdersEndpoints\u003Eb__0_6",
+    "RelativePath": "api/v1/orders/validate-stock",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.Orders.ValidateStockRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTOs.Orders.ValidateStockResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Orders"
+    ],
+    "EndpointName": "ValidateStock",
+    "Summary": "Valida la disponibilidad de stock para una lista de productos."
+  },
+  {
     "ContainingType": "WebApi.Endpoints.ProductsEndpoints\u002B\u003C\u003Ec",
     "Method": "\u003CMapProductsEndpoints\u003Eb__0_0",
     "RelativePath": "api/v1/products/",
@@ -43,7 +374,18 @@
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Void",
@@ -60,11 +402,11 @@
       "Products"
     ],
     "EndpointName": "GetAllProducts",
-    "Summary": "Obtener todos los productos registrados"
+    "Summary": "Obtener todos los productos registrados con paginaci\u00F3n"
   },
   {
     "ContainingType": "WebApi.Endpoints.ProductsEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapProductsEndpoints\u003Eb__0_3",
+    "Method": "\u003CMapProductsEndpoints\u003Eb__0_4",
     "RelativePath": "api/v1/products/{id:guid}",
     "HttpMethod": "PUT",
     "IsController": false,
@@ -106,12 +448,12 @@
     "Tags": [
       "Products"
     ],
-    "EndpointName": "UpdatePerson",
+    "EndpointName": "UpdateProduct",
     "Summary": "Actualiza la informaci\u00F3n de una producto existente"
   },
   {
     "ContainingType": "WebApi.Endpoints.ProductsEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapProductsEndpoints\u003Eb__0_4",
+    "Method": "\u003CMapProductsEndpoints\u003Eb__0_5",
     "RelativePath": "api/v1/products/{id:guid}",
     "HttpMethod": "DELETE",
     "IsController": false,
@@ -170,6 +512,11 @@
         "Type": "System.Void",
         "MediaTypes": [],
         "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
       }
     ],
     "Tags": [
@@ -180,7 +527,7 @@
   },
   {
     "ContainingType": "WebApi.Endpoints.ProductsEndpoints\u002B\u003C\u003Ec",
-    "Method": "\u003CMapProductsEndpoints\u003Eb__0_5",
+    "Method": "\u003CMapProductsEndpoints\u003Eb__0_6",
     "RelativePath": "api/v1/products/barcode/{barcode}",
     "HttpMethod": "GET",
     "IsController": false,
@@ -214,5 +561,57 @@
     ],
     "EndpointName": "GetProductByBarcode",
     "Summary": "Obtener un producto por su barcode"
+  },
+  {
+    "ContainingType": "WebApi.Endpoints.ProductsEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapProductsEndpoints\u003Eb__0_3",
+    "RelativePath": "api/v1/products/search",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoryId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "subCategoryId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Products"
+    ],
+    "EndpointName": "SearchProducts",
+    "Summary": "Buscar productos por nombre, categor\u00EDa o subcategor\u00EDa con paginaci\u00F3n"
   }
 ]

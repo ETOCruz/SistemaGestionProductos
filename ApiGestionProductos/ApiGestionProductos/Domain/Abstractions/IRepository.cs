@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,6 +10,7 @@ namespace Domain.Abstractions
         Task<TEntity?> GetByIdAsync(TId id);
 
         Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<(IEnumerable<TEntity> Items, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize);
 
         Task AddAsync(TEntity entity);
 

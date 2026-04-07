@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +11,7 @@ namespace Application.DTOs.Producs
         public string Name { get; set; } = string.Empty;
         public int ProductQuantity { get; set; } = 0;
         public string ProductDescription { get; set; } = string.Empty;
+        public int? SubCategoryId { get; set; }
 
     }
 }

@@ -1,4 +1,4 @@
-﻿using Data.Persistence;
+using Data.Persistence;
 using Data.Repository;
 using Domain;
 using Domain.Abstractions;
@@ -19,8 +19,14 @@ namespace Data
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRepository<ProductEntity, Guid>, ProductRepository>();
             services.AddScoped<ICodeRepository<ProductEntity>, ProductRepository>();
+            services.AddScoped<IRepository<CategoryEntity, int>, CategoryRepository>();
+            services.AddScoped<IRepository<SubCategoryEntity, int>, SubCategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IOrderStatusHistoryRepository, OrderStatusHistoryRepository>();
 
             return services;
         }

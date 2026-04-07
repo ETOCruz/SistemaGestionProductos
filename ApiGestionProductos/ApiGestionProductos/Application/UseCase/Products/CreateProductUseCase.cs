@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Producs;
+using Application.DTOs.Producs;
 using Domain;
 using Domain.Abstractions;
 using System;
@@ -25,7 +25,7 @@ namespace Application.UseCase.Products
             {
                 throw new InvalidOperationException("El barcode ya existe en el sistema.");
             }
-            var product = new ProductEntity(dto.Barcode, dto.Price, dto.Name, dto.ProductQuantity, dto.ProductDescription);
+            var product = new ProductEntity(dto.Barcode, dto.Price, dto.Name, dto.ProductDescription, dto.SubCategoryId);
 
             await _repository.AddAsync(product);
             await _repository.SaveChangesAsync();

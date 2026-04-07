@@ -163,4 +163,5 @@ C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGest
 C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\obj\Debug\net10.0\WebApi.pdb
 C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\obj\Debug\net10.0\WebApi.genruntimeconfig.cache
 C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\obj\Debug\net10.0\ref\WebApi.dll
-C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\bin\Debug\net10.0\Tools.dll
+C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\bin\Debug\net10.0\Tools.pdb

@@ -11,7 +11,8 @@
           "Application": "1.0.0",
           "Data": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "10.0.5",
-          "Microsoft.EntityFrameworkCore.Design": "10.0.5"
+          "Microsoft.EntityFrameworkCore.Design": "10.0.5",
+          "Tools": "1.0.0"
         },
         "runtime": {
           "WebApi.dll": {}
@@ -798,6 +799,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Tools/1.0.0": {
+        "runtime": {
+          "Tools.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1133,6 +1142,11 @@
       "sha512": ""
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Tools/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

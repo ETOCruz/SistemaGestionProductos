@@ -1,22 +1,41 @@
-﻿using Domain;
+using Application.DTOs;
+using Application.DTOs.Products;
+using Domain;
 using Domain.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Application.UseCase.Products
 {
     public class GetAllProductsUseCase
     {
-        private readonly IRepository<ProductEntity, Guid> _repository;
+        private readonly IProductRepository _repository;
 
-        public GetAllProductsUseCase(IRepository<ProductEntity, Guid> repository)
+        public GetAllProductsUseCase(IProductRepository repository)
         {
             _repository = repository;
         }
-        public async Task<IEnumerable<ProductEntity>> ExecuteAsync()
+
+        public async Task<PagedResponseDto<ProductResponseDto>> ExecuteAsync(int pageNumber, int pageSize)
         {
-            return await _repository.GetAllAsync();
+            var (items, totalCount) = await _repository.GetPagedAsync(pageNumber, pageSize);
+            
+            var dtos = items.Select(p => new ProductResponseDto
+            {
+                Id = p.Id,
+                Barcode = p.Barcode,
+                Name = p.Name,
+                Description = p.ProductDescription,
+                Price = p.Price,
+                SubCategoryId = p.SubCategoryId,
+                SubCategoryName = p.SubCategory?.Name ?? "N/A",
+                CategoryId = p.SubCategory?.Category?.Id,
+                CategoryName = p.SubCategory?.Category?.Name ?? "N/A"
+            });
+
+            return new PagedResponseDto<ProductResponseDto>(dtos, totalCount, pageNumber, pageSize);
         }
     }
 }

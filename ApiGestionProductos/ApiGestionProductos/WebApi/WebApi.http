@@ -1,43 +1,108 @@
 @WebApi_HostAddress = http://localhost:5063
 @ProductsEndpoints = /api/v1/products
+@OrdersEndpoints = /api/v1/orders
 
-### 1 obtenemos la lista de productos
-GET {{WebApi_HostAddress}}{{ProductsEndpoints}}
-Accept: application/json
+### --- SECCIÓN DE PRODUCTOS ---
 
-### 2 creamos un nuevo producto
+### 1. PRODUCTOS: Crear un nuevo producto
 POST {{WebApi_HostAddress}}{{ProductsEndpoints}}
 Content-Type: application/json
 
 {
-  "barcode": "123456",
+  "barcode": "123456789",
   "price": 25.50,
-  "name": "naranjas",
-  "ProductDescription": "Fruta fresca",
-  "ProductQuantity": 20
+  "name": "Naranjas Valencianas",
+  "productQuantity": 100,
+  "productDescription": "Fruta fresca de temporada",
+  "subCategoryId": 1
 }
 
-### 3 obtenemos un producto por su id
-GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/46f3f79d-0488-4f61-abcd-517cce578cd4
+### 2. PRODUCTOS: Obtener un producto por su Barcode
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/barcode/123456789
 Accept: application/json
 
-### 4 Actualizamos un producto por su id
+### 3. PRODUCTOS: Obtener un producto por su ID
+# Reemplazar el GUID con uno existente en la base de datos
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC
+Accept: application/json
+
+### 4. PRODUCTOS: Obtener lista (Paginado)
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}?pageNumber=1&pageSize=10
+Accept: application/json
+
+### 5. PRODUCTOS: Buscar por Nombre/Categoría (Paginado)
+# Query params: name, categoryId, subCategoryId, pageNumber, pageSize
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/search?categoryId=1&pageNumber=1&pageSize=5
+Accept: application/json
+
+### 6. PRODUCTOS: Actualizar un producto existente
 PUT {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC
 Content-Type: application/json
 
 {
   "id": "3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC",
-  "barcode": "1234563",
-  "price": 25.50,
-  "name": "naranjas",
-  "ProductDescription": "Fruta fresca",
-  "ProductQuantity": 60
+  "barcode": "123456789",
+  "price": 27.00,
+  "name": "Naranjas Premium",
+  "productQuantity": 150,
+  "productDescription": "Fruta seleccionada de alta calidad",
+  "subCategoryId": 1
 }
 
-### 5 obtenemos un producto por su barcode
-GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/barcode/1234563
+### 7. PRODUCTOS: Eliminar un producto
+DELETE {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC
 Accept: application/json
 
-### 6 Eliminar un producto 
-DELETE {{WebApi_HostAddress}}{{ProductsEndpoints}}/3551B68E-47EA-46CD-A199-E8E7E6E42AAA
+### 8. PRODUCTOS: Obtener todas las categorías con sus subcategorías
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/categories
 Accept: application/json
+
+### 9. PRODUCTOS: Obtener subcategorías por ID de categoría
+# Ejemplo: ID de Tecnología (1)
+GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/categories/1/subcategories
+Accept: application/json
+
+
+### --- SECCIÓN DE ÓRDENES (TICKETS) ---
+
+### 7. ÓRDENES: Validar Stock (Antes de crear)
+POST {{WebApi_HostAddress}}{{OrdersEndpoints}}/validate-stock
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "productId": "3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec",
+      "quantity": 2
+    },
+    {
+      "productId": "46f3f79d-0488-4f61-abcd-517cce578cd4",
+      "quantity": 3
+    }
+  ]
+}
+
+### 8. ÓRDENES: Crear nueva Cotización (Rol: Vendedor)
+# Se requiere un sellerId para asociar la orden.
+POST {{WebApi_HostAddress}}{{OrdersEndpoints}}
+Content-Type: application/json
+
+{
+  "sellerId": "df3f6f9e-6f89-4e0c-99f1-7cde8e888888",
+  "items": [
+    {
+      "productId": "3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec",
+      "quantity": 2
+    }
+  ]
+}
+
+### 9. ÓRDENES: Listar todas (Paginado y Filtrado por Estatus)
+# Status: 0=Cotizacion, 1=Autorizacion, 2=Surtido, 3=Pausa, 4=Finalizada
+GET {{WebApi_HostAddress}}{{OrdersEndpoints}}?status=0&pageNumber=1&pageSize=10
+Accept: application/json
+
+### 10. ÓRDENES: Consultar estatus y detalles
+GET {{WebApi_HostAddress}}{{OrdersEndpoints}}/ec376318-b155-45e2-ae53-cd0e42c0ee20
+Accept: application/json
+

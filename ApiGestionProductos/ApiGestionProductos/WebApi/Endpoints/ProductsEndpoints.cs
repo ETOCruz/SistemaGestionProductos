@@ -1,5 +1,14 @@
-﻿using Application.UseCase.Products;
+using Application.UseCase.Products;
+using Application.UseCase.Categories;
 using Application.DTOs.Producs;
+using Application.DTOs;
+using Tools;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
+using System.Threading.Tasks;
+using System;
 
 namespace WebApi.Endpoints
 {
@@ -26,10 +35,6 @@ namespace WebApi.Endpoints
                 {
                     return Results.BadRequest(new { error = ex.Message });
                 }
-                catch (Exception ex)
-                {
-                    return Results.InternalServerError(ex.Message);
-                }
             })
             .WithName("CreateProduct")
             .WithSummary("Crea un nuevo Producto")
@@ -52,24 +57,42 @@ namespace WebApi.Endpoints
             .WithName("GetProductById")
             .WithSummary("Obtener una product por su id")
             .Produces(StatusCodes.Status200OK)
-            .Produces(StatusCodes.Status404NotFound);
+            .Produces(StatusCodes.Status404NotFound)
+            .Produces(StatusCodes.Status500InternalServerError);
 
-            group.MapGet("/", async (GetAllProductsUseCase useCase) =>
+            group.MapGet("/", async (int? pageNumber, int? pageSize, GetAllProductsUseCase useCase) =>
             {
                 try
                 {
-                    var Products = await useCase.ExecuteAsync();
-                    return Results.Ok(Products);
+                    var products = await useCase.ExecuteAsync(pageNumber ?? 1, pageSize ?? 10);
+                    return Results.Ok(products);
                 }
                 catch (Exception ex)
                 {
-                    return Results.InternalServerError(ex.Message);
+                    return Results.BadRequest(new { error = ex.Message });
                 }
             })
             .WithName("GetAllProducts")
-            .WithSummary("Obtener todos los productos registrados")
+            .WithSummary("Obtener todos los productos registrados con paginación")
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status500InternalServerError);
+
+            group.MapGet("/search", async (string? name, int? categoryId, int? subCategoryId, int? pageNumber, int? pageSize, SearchProductsUseCase useCase) =>
+            {
+                try
+                {
+                    var result = await useCase.ExecuteAsync(name, categoryId, subCategoryId, pageNumber ?? 1, pageSize ?? 10);
+                    return Results.Ok(result);
+                }
+                catch (Exception ex)
+                {
+                    return Results.BadRequest(new { error = ex.Message });
+                }
+            })
+            .WithName("SearchProducts")
+            .WithSummary("Buscar productos por nombre, categoría o subcategoría con paginación")
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status400BadRequest);
 
             group.MapPut("/{id:guid}", async (Guid id, UpdateProductDto dto, UpdateProductUseCase useCase) =>
             {
@@ -90,12 +113,8 @@ namespace WebApi.Endpoints
                 {
                     return Results.BadRequest(new { error = ex.Message });
                 }
-                catch (Exception ex)
-                {
-                    return Results.InternalServerError(ex.Message);
-                }
             })
-            .WithName("UpdatePerson")
+            .WithName("UpdateProduct")
             .WithSummary("Actualiza la información de una producto existente")
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status400BadRequest)
@@ -112,10 +131,6 @@ namespace WebApi.Endpoints
                 catch (InvalidOperationException ex)
                 {
                     return Results.NotFound(new { error = ex.Message });
-                }
-                catch (Exception ex)
-                {
-                    return Results.InternalServerError(ex.Message);
                 }
             })
             .WithName("DeleteProduct")
@@ -135,16 +150,28 @@ namespace WebApi.Endpoints
                 {
                     return Results.NotFound(new { error = ex.Message });
                 }
-                catch (Exception ex)
-                {
-                    return Results.InternalServerError(new { error = ex.Message });
-                }
             })
             .WithName("GetProductByBarcode")
             .WithSummary("Obtener un producto por su barcode")
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status404NotFound)
             .Produces(StatusCodes.Status500InternalServerError);
+
+            group.MapGet("/categories", async (GetCategoriesUseCase useCase) =>
+            {
+                var result = await useCase.ExecuteAsync();
+                return Results.Ok(result);
+            })
+            .WithName("GetCategories")
+            .WithSummary("Obtener todos los categorías con sus subcategorías");
+
+            group.MapGet("/categories/{id:int}/subcategories", async (int id, GetSubCategoriesUseCase useCase) =>
+            {
+                var result = await useCase.ExecuteAsync(id);
+                return Results.Ok(result);
+            })
+            .WithName("GetSubCategories")
+            .WithSummary("Obtener subcategorías por el id de la categoría");
         }
     }
 }

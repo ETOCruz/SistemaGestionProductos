@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Producs;
+using Application.DTOs.Producs;
 using Domain;
 using Domain.Abstractions;
 using System;
@@ -24,12 +24,12 @@ namespace Application.UseCase.Products
                 throw new InvalidOperationException($"No se encontró una producto con el ID: {dto.Id}");
             }
 
-            product.UpdateProduct(dto.Barcode, dto.Price, dto.Name, dto.ProductQuantity, dto.ProductDescription);
+            product.UpdateProduct(dto.Barcode, dto.Price, dto.Name, dto.ProductDescription, dto.SubCategoryId);
 
             await _repository.UpdateAsync(product);
             await _repository.SaveChangesAsync();
 
-            return product;
+            return await _repository.GetByIdAsync(product.Id) ?? product;
         }
 
     }
