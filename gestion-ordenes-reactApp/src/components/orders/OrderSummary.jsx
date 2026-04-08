@@ -80,7 +80,7 @@ export function OrderSummary() {
 
             <div className="order-items">
                 {cart.map(item => (
-                    <div key={item.id} className="order-item">
+                    <div key={item.guid} className="order-item">
                         <div className="order-item__info">
                             <h4 className="order-item__name">{item.name}</h4>
                             <p className="order-item__price">${item.price ? item.price.toFixed(2) : '0.00'}</p>

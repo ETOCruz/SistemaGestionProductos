@@ -57,7 +57,7 @@ export default function DespachoOrden() {
 
     // Mantener siempre el foco en el input al escanear si estamos en modo surtido
     useEffect(() => {
-        if (order?.statusId === 2 && inputRef.current) {
+        if ((order?.statusId === 2 || order?.statusId === 3) && inputRef.current) {
             inputRef.current.focus();
         }
     }, [order, actionError, actionSuccess]);
@@ -186,8 +186,8 @@ export default function DespachoOrden() {
                             </div>
                         )}
 
-                        {/* Estatus 2: Modo de Surtido Escaner Activo */}
-                        {order.statusId === 2 && (
+                        {/* Estatus 2 y 3: Modo de Surtido Escaner Activo */}
+                        {(order.statusId === 2 || order.statusId === 3) && (
                             <div className="action-box scanner-box">
                                 <p className="scanner-instruction">Escanea el código de barras del producto (o captúralo manual)</p>
                                 <form onSubmit={handleScanSubmit} className="scanner-form">
@@ -242,7 +242,7 @@ export default function DespachoOrden() {
                                 const isComplete = detail.quantityScanned >= detail.quantityOrdered;
 
                                 return (
-                                    <div key={detail.id} className={`checklist-item ${isComplete ? 'checklist-item--done' : ''}`}>
+                                    <div key={detail.guid} className={`checklist-item ${isComplete ? 'checklist-item--done' : ''}`}>
                                         <div className="item-info">
                                             <h4>{detail.productName}</h4>
                                             <span className="code">Código/ID: {detail.productId}</span>

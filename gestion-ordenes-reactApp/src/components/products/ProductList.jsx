@@ -16,7 +16,7 @@ export function ProductList({ products }) {
     return (
         <div className="product-list">
             {products.map(product => (
-                <div key={product.id} className="product-card">
+                <div key={product.guid} className="product-card">
                     <div className="product-card__header">
                         <h3 className="product-card__title">{product.name}</h3>
                         <p className="product-card__barcode">Cód: {product.barcode}</p>

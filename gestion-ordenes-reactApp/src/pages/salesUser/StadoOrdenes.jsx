@@ -98,7 +98,7 @@ export default function StadoOrdenes() {
                     {!error && orders.length > 0 && (
                         <div className="orders-grid">
                             {orders.map(order => (
-                                <div key={order.id} className="order-card">
+                                <div key={order.guid} className="order-card">
                                     <div className="order-card__header">
                                         <span className="order-folio">Folio: {order.folio || 'N/A'}</span>
                                         {getStatusBadge(order.statusId, order.status)}
