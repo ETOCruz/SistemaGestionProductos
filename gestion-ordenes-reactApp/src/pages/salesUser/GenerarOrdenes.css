@@ -1,0 +1,35 @@
+.generar-ordenes {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.generar-ordenes__header {
+    margin-bottom: 2rem;
+}
+
+.generar-ordenes__title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #111827;
+    margin: 0 0 0.5rem 0;
+}
+
+.generar-ordenes__subtitle {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.generar-ordenes__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .generar-ordenes__grid {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+}

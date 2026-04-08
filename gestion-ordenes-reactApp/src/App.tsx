@@ -3,9 +3,11 @@ import { Routes, Route } from 'react-router-dom'
 import ProtectedRoute from '@components/ProtectedRoute'
 import { useLoader } from '@hooks/useLoader'
 import { Loader } from '@components/Loader'
+import { GlobalToast } from '@components/layout/GlobalToast'
 
 const LazyHomePage = lazy(() => import('@pages/Home.jsx'))
 const LazyAutentication = lazy(() => import('@pages/Autentication.jsx'))
+const LazyGenerarOrdenes = lazy(() => import('@pages/salesUser/GenerarOrdenes.jsx'))
 
 function App() {
 
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <>
+      <GlobalToast />
       <Suspense fallback={<Loader />}>
         {isLoading && <Loader />}
         <Routes>
@@ -22,6 +25,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <LazyHomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ventas/generar-orden"
+            element={
+              <ProtectedRoute>
+                <LazyGenerarOrdenes />
               </ProtectedRoute>
             }
           />
