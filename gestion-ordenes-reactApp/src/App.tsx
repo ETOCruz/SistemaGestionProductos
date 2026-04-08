@@ -8,6 +8,7 @@ import { GlobalToast } from '@components/layout/GlobalToast'
 const LazyHomePage = lazy(() => import('@pages/Home.jsx'))
 const LazyAutentication = lazy(() => import('@pages/Autentication.jsx'))
 const LazyGenerarOrdenes = lazy(() => import('@pages/salesUser/GenerarOrdenes.jsx'))
+const LazyStadoOrdenes = lazy(() => import('@pages/salesUser/StadoOrdenes.jsx'))
 
 function App() {
 
@@ -33,6 +34,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <LazyGenerarOrdenes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ventas/ordenes"
+            element={
+              <ProtectedRoute>
+                <LazyStadoOrdenes />
               </ProtectedRoute>
             }
           />

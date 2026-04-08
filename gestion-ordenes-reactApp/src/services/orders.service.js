@@ -42,3 +42,28 @@ export async function createOrder(sellerId, items) {
         throw error;
     }
 }
+
+export async function getAllOrders({ status, pageNumber = 1, pageSize = 10 }) {
+    try {
+        const queryParams = new URLSearchParams();
+        if (status !== undefined && status !== null) queryParams.append('status', status);
+        queryParams.append('pageNumber', pageNumber);
+        queryParams.append('pageSize', pageSize);
+
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders?${queryParams.toString()}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (!response.ok) {
+            throw new Error('Error al obtener la lista de órdenes');
+        }
+        
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
