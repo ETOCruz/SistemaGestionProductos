@@ -93,5 +93,25 @@ namespace Application.UseCase.Orders
 
             return order.ToDto();
         }
+        public async Task<OrderResponseDto> ResumeOrderAsync(Guid orderId, Guid userId)
+        {
+            var order = await _orderRepository.GetWithDetailsAsync(orderId);
+            if (order == null) throw new InvalidOperationException("Orden no encontrada.");
+
+            if (order.Status != OrderStatus.Pausa)
+                throw new InvalidOperationException("La orden debe estar en Pausa para poder ser reanudada.");
+
+            order.StartPicking(); // Mueve a EnSurtido
+
+            // Registro de reanudar en el historial
+            var resumeHistory = new OrderStatusHistoryEntity(order.Id, order.Status, userId, "Surtido reanudado por el Jefe de Bodega.");
+            await _historyRepository.AddAsync(resumeHistory);
+
+            await _orderRepository.UpdateAsync(order);
+            await _orderRepository.SaveChangesAsync();
+            await _historyRepository.SaveChangesAsync();
+
+            return order.ToDto();
+        }
     }
 }

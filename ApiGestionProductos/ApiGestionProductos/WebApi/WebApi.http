@@ -9,12 +9,12 @@ POST {{WebApi_HostAddress}}{{ProductsEndpoints}}
 Content-Type: application/json
 
 {
-  "barcode": "123456790",
+  "barcode": "198867",
   "price": 25.50,
-  "name": "Naranjas Valencianas",
+  "name": "Tarja eb de 3 tinas",
   "productQuantity": 100,
-  "productDescription": "Fruta fresca de temporada",
-  "subCategoryId": 1
+  "productDescription": "Modelo Eb onen33229-1012ht",
+  "subCategoryId": 4
 }
 
 ### 2. PRODUCTOS: Obtener un producto por su Barcode
@@ -64,6 +64,8 @@ Accept: application/json
 
 
 ### --- SECCIÓN DE ÓRDENES (TICKETS) ---
+@OrderId = ec376318-b155-45e2-ae53-cd0e42c0ee20
+@JefeBodegaId = 9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d
 
 ### 7. ÓRDENES: Validar Stock (Antes de crear)
 POST {{WebApi_HostAddress}}{{OrdersEndpoints}}/validate-stock
@@ -98,11 +100,42 @@ Content-Type: application/json
 }
 
 ### 9. ÓRDENES: Listar todas (Paginado y Filtrado por Estatus)
-# Status: 0=Cotizacion, 1=Autorizacion, 2=Surtido, 3=Pausa, 4=Finalizada
-GET {{WebApi_HostAddress}}{{OrdersEndpoints}}?status=0&pageNumber=1&pageSize=10
+# Status: null= todas, 1=Cotizacion, 2=Autorizacion, 3=Surtido, 4=Pausa 5=Finalizada
+GET {{WebApi_HostAddress}}{{OrdersEndpoints}}?status=1&pageNumber=1&pageSize=10
 Accept: application/json
 
 ### 10. ÓRDENES: Consultar estatus y detalles
-GET {{WebApi_HostAddress}}{{OrdersEndpoints}}/ec376318-b155-45e2-ae53-cd0e42c0ee20
+GET {{WebApi_HostAddress}}{{OrdersEndpoints}}/{{OrderId}}
 Accept: application/json
+
+### 11. ÓRDENES: Autorizar Orden (Rol: Jefe de Bodega)
+# Valida stock e inicia el proceso de surtido
+POST {{WebApi_HostAddress}}{{OrdersEndpoints}}/{{OrderId}}/authorize?userId={{JefeBodegaId}}
+Accept: application/json
+
+### 12. ÓRDENES: Escanear Producto / Surtido (Rol: Jefe de Bodega)
+# Registra el escaneo de los productos requeridos 
+PUT {{WebApi_HostAddress}}{{OrdersEndpoints}}/{{OrderId}}/scan
+Content-Type: application/json
+
+{
+  "userId": "{{JefeBodegaId}}",
+  "barcode": "198867",
+  "quantity": 1
+}
+
+### 13. ÓRDENES: Pausar Orden (Rol: Jefe de Bodega)
+# Pone en pausa la orden si hay una incidencia durante el surtido
+PUT {{WebApi_HostAddress}}{{OrdersEndpoints}}/{{OrderId}}/pause?userId={{JefeBodegaId}}
+Accept: application/json
+
+### 14. INVENTARIO: Dar entrada a stock (Rol: Jefe de Bodega)
+# Incrementa la cantidad de existencias de un producto de forma atómica
+# Reemplazar el GUID con uno existente
+PUT {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC/add-stock
+Content-Type: application/json
+
+{
+  "quantityToAdd": 50
+}
 

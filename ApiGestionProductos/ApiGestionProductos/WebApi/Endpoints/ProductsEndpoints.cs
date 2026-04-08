@@ -139,6 +139,29 @@ namespace WebApi.Endpoints
             .Produces(StatusCodes.Status404NotFound)
             .Produces(StatusCodes.Status500InternalServerError);
 
+            group.MapPut("/{id:guid}/add-stock", async (Guid id, AddStockDto dto, AddProductStockUseCase useCase) =>
+            {
+                try
+                {
+                    await useCase.ExecuteAsync(id, dto);
+                    return Results.Ok(new { message = "Stock incrementado exitosamente." });
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.NotFound(new { error = ex.Message });
+                }
+                catch (ArgumentException ex)
+                {
+                    return Results.BadRequest(new { error = ex.Message });
+                }
+            })
+            .WithName("AddProductStock")
+            .WithSummary("Agrega stock (entradas) al inventario actual de un producto registrado")
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status400BadRequest)
+            .Produces(StatusCodes.Status404NotFound)
+            .Produces(StatusCodes.Status500InternalServerError);
+
             group.MapGet("/barcode/{barcode}", async (string barcode, GetProductByBarcodeUseCase useCase) =>
             {
                 try

@@ -22,6 +22,7 @@ namespace Data
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRepository<ProductEntity, Guid>, ProductRepository>();
             services.AddScoped<ICodeRepository<ProductEntity>, ProductRepository>();
+            services.AddScoped<IRepository<WarehouseEntity, Guid>, WarehouseRepository>();
             services.AddScoped<IRepository<CategoryEntity, int>, CategoryRepository>();
             services.AddScoped<IRepository<SubCategoryEntity, int>, SubCategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();

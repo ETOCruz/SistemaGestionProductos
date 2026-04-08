@@ -53,6 +53,7 @@ builder.Services.AddScoped<GetProductByBarcodeUseCase>();
 builder.Services.AddScoped<GetProductByIdUseCase>();
 builder.Services.AddScoped<UpdateProductUseCase>();
 builder.Services.AddScoped<SearchProductsUseCase>();
+builder.Services.AddScoped<AddProductStockUseCase>();
 #endregion
 
 #region CategoryUseCase

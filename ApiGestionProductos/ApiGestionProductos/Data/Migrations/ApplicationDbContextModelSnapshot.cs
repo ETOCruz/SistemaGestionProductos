@@ -68,6 +68,80 @@ namespace Data.Migrations
                     b.HasIndex("WarehouseId");
 
                     b.ToTable("Inventories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = new Guid("46f3f79d-0488-4f61-abcd-517cce578cd4"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("d0151aab-c32e-4b50-b629-e380f50342c8"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("20624587-9688-4842-801e-5a98219c3fb6"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("a1779efe-cdb4-4e67-9dd0-5da791841132"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("39a0bd15-b635-422a-b1bf-54dc66cb1581"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec"),
+                            WarehouseId = new Guid("11111111-1111-1111-1111-111111111111"),
+                            StockQuantity = 100
+                        },
+                        new
+                        {
+                            ProductId = new Guid("46f3f79d-0488-4f61-abcd-517cce578cd4"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            ProductId = new Guid("d0151aab-c32e-4b50-b629-e380f50342c8"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            ProductId = new Guid("20624587-9688-4842-801e-5a98219c3fb6"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            ProductId = new Guid("a1779efe-cdb4-4e67-9dd0-5da791841132"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            ProductId = new Guid("39a0bd15-b635-422a-b1bf-54dc66cb1581"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        },
+                        new
+                        {
+                            ProductId = new Guid("3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec"),
+                            WarehouseId = new Guid("22222222-2222-2222-2222-222222222222"),
+                            StockQuantity = 50
+                        });
                 });
 
             modelBuilder.Entity("Domain.OrderDetailEntity", b =>
@@ -200,6 +274,62 @@ namespace Data.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("46f3f79d-0488-4f61-abcd-517cce578cd4"),
+                            Barcode = "123456789",
+                            Name = "Asus Vivobook",
+                            Price = 25.50m,
+                            ProductDescription = "The ASUS Vivobook is a versatile",
+                            SubCategoryId = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("d0151aab-c32e-4b50-b629-e380f50342c8"),
+                            Barcode = "163062",
+                            Name = "Escritorio de baal con 3 cajones color nogal",
+                            Price = 25.50m,
+                            ProductDescription = "Modelo Baal walnut b",
+                            SubCategoryId = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("20624587-9688-4842-801e-5a98219c3fb6"),
+                            Barcode = "198866",
+                            Name = "Tarja eb de 1 tinas",
+                            Price = 25.50m,
+                            ProductDescription = "Modelo Eb onen33229-1012hf",
+                            SubCategoryId = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("a1779efe-cdb4-4e67-9dd0-5da791841132"),
+                            Barcode = "198865",
+                            Name = "Tarja eb de 2 tinas",
+                            Price = 25.50m,
+                            ProductDescription = "Modelo Eb onen33229-1012hd",
+                            SubCategoryId = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("39a0bd15-b635-422a-b1bf-54dc66cb1581"),
+                            Barcode = "198867",
+                            Name = "Tarja eb de 3 tinas",
+                            Price = 25.50m,
+                            ProductDescription = "Modelo Eb onen33229-1012ht",
+                            SubCategoryId = 4
+                        },
+                        new
+                        {
+                            Id = new Guid("3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec"),
+                            Barcode = "1234563",
+                            Name = "Xiaomi POCO F7 Ultra",
+                            Price = 25.50m,
+                            ProductDescription = "Fruta seleccionada de alta calidad",
+                            SubCategoryId = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.SubCategoryEntity", b =>

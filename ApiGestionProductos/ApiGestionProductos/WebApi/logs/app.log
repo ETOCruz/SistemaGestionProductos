@@ -48,3 +48,36 @@ Log entry: traceId=00-d77b1cda02cd6efb010b34f0f405a84e-db1ba50da8480601-00 [2026
    at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
 --- End of stack trace from previous location ---
    at WebApi.Middleware.ExceptionLoggingMiddleware.InvokeAsync(HttpContext context) in C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\Middleware\ExceptionLoggingMiddleware.cs:line 26
+Log entry: traceId=00-96c8f0430e6814844573efc8d2f56a93-2d59c2344b2d5c3c-00 [2026-04-08T02:00:21.1442896Z] POST /api/v1/orders - Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to read parameter "CreateOrderDto dto" from the request body as JSON.
+ ---> System.Text.Json.JsonException: The JSON value could not be converted to System.Guid. Path: $.sellerId | LineNumber: 0 | BytePositionInLine: 13.
+ ---> System.InvalidOperationException: Cannot get the value of a token type 'Number' as a string.
+   at System.Text.Json.ThrowHelper.ThrowInvalidOperationException_ExpectedString(JsonTokenType tokenType)
+   at System.Text.Json.Utf8JsonReader.TryGetGuid(Guid& value)
+   at System.Text.Json.Utf8JsonReader.GetGuid()
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, Utf8JsonReader& reader, Exception ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize[TReadBufferState,TStream](TReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack, T& value)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsync[TReadBufferState,TStream](TStream utf8Json, TReadBufferState bufferState, CancellationToken cancellationToken)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsObjectAsync(PipeReader utf8Json, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.HttpRequestJsonExtensions.ReadFromJsonAsync(HttpRequest request, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.HttpRequestJsonExtensions.ReadFromJsonAsync(HttpRequest request, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<HandleRequestBodyAndCompileRequestDelegateForJson>g__TryReadBodyAsync|102_0(HttpContext httpContext, Type bodyType, String parameterTypeName, String parameterName, Boolean allowEmptyRequestBody, Boolean throwOnBadRequest, JsonTypeInfo jsonTypeInfo)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.Log.InvalidJsonRequestBody(HttpContext httpContext, String parameterTypeName, String parameterName, Exception exception, Boolean shouldThrow)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<HandleRequestBodyAndCompileRequestDelegateForJson>g__TryReadBodyAsync|102_0(HttpContext httpContext, Type bodyType, String parameterTypeName, String parameterName, Boolean allowEmptyRequestBody, Boolean throwOnBadRequest, JsonTypeInfo jsonTypeInfo)
+   at Microsoft.AspNetCore.Http.RequestDelegateFactory.<>c__DisplayClass102_2.<<HandleRequestBodyAndCompileRequestDelegateForJson>b__2>d.MoveNext()
+--- End of stack trace from previous location ---
+   at WebApi.Middleware.ExceptionLoggingMiddleware.InvokeAsync(HttpContext context) in C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\Middleware\ExceptionLoggingMiddleware.cs:line 26
+Log entry: traceId=00-cd34c6a1c5d913bc0d9854d2bc86312e-f156995649dac82e-00 [2026-04-08T17:46:12.3723385Z] POST /api/v1/orders/ef998dc2-0a03-430d-8ca4-28720bd6aae7/authorize - Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to bind parameter "Guid userId" from "2".
+   at lambda_method28(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at WebApi.Middleware.ExceptionLoggingMiddleware.InvokeAsync(HttpContext context) in C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\Middleware\ExceptionLoggingMiddleware.cs:line 26
+Log entry: traceId=00-73c1e0ad24f4611abcb9768069006dfa-c45364fa73b1801e-00 [2026-04-08T17:54:23.2062007Z] POST /api/v1/orders/ef998dc2-0a03-430d-8ca4-28720bd6aae7/authorize - Microsoft.AspNetCore.Http.BadHttpRequestException: Failed to bind parameter "Guid userId" from "2".
+   at lambda_method28(Closure, Object, HttpContext)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at WebApi.Middleware.ExceptionLoggingMiddleware.InvokeAsync(HttpContext context) in C:\workspace pruebasTecnicas\SistemaGestionProductos\ApiGestionProductos\ApiGestionProductos\WebApi\Middleware\ExceptionLoggingMiddleware.cs:line 26

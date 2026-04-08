@@ -49,5 +49,10 @@ namespace Data.Repository
                 .OrderByDescending(i => i.StockQuantity)
                 .ToListAsync();
         }
+
+        public async Task AddAsync(InventoryEntity inventory)
+        {
+            await _context.Inventory.AddAsync(inventory);
+        }
     }
 }

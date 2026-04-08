@@ -11,5 +11,6 @@ namespace Domain.Abstractions
         Task UpdateAsync(InventoryEntity inventory);
         Task<int> SaveChangesAsync();
         Task<IEnumerable<InventoryEntity>> GetAllByProductIdAsync(Guid productId);
+        Task AddAsync(InventoryEntity inventory);
     }
 }

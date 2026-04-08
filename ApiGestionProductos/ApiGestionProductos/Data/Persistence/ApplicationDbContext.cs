@@ -184,6 +184,40 @@ namespace Data.Persistence
                 new { Id = 4, Name = "Cocina", CategoryId = homeId }
             );
 
+            // Semilla de Productos
+            var p1Id = Guid.Parse("46f3f79d-0488-4f61-abcd-517cce578cd4");
+            var p2Id = Guid.Parse("d0151aab-c32e-4b50-b629-e380f50342c8");
+            var p3Id = Guid.Parse("20624587-9688-4842-801e-5a98219c3fb6");
+            var p4Id = Guid.Parse("a1779efe-cdb4-4e67-9dd0-5da791841132");
+            var p5Id = Guid.Parse("39a0bd15-b635-422a-b1bf-54dc66cb1581");
+            var p6Id = Guid.Parse("3fef1b0e-1fbf-4f77-ae32-e5828cdd7fec");
+
+            modelBuilder.Entity<ProductEntity>().HasData(
+                new { Id = p1Id, Barcode = "123456789", Name = "Asus Vivobook", ProductDescription = "The ASUS Vivobook is a versatile", Price = 25.50m, SubCategoryId = 2 },
+                new { Id = p2Id, Barcode = "163062", Name = "Escritorio de baal con 3 cajones color nogal", ProductDescription = "Modelo Baal walnut b", Price = 25.50m, SubCategoryId = 3 },
+                new { Id = p3Id, Barcode = "198866", Name = "Tarja eb de 1 tinas", ProductDescription = "Modelo Eb onen33229-1012hf", Price = 25.50m, SubCategoryId = 4 },
+                new { Id = p4Id, Barcode = "198865", Name = "Tarja eb de 2 tinas", ProductDescription = "Modelo Eb onen33229-1012hd", Price = 25.50m, SubCategoryId = 4 },
+                new { Id = p5Id, Barcode = "198867", Name = "Tarja eb de 3 tinas", ProductDescription = "Modelo Eb onen33229-1012ht", Price = 25.50m, SubCategoryId = 4 },
+                new { Id = p6Id, Barcode = "1234563", Name = "Xiaomi POCO F7 Ultra", ProductDescription = "El contenido del paquete puede variar según la región.", Price = 25.50m, SubCategoryId = 2 }
+            );
+
+            // Semilla de Inventarios (100 unidades en la Bodega 1 y 50 en la Bodega 2)
+            modelBuilder.Entity<InventoryEntity>().HasData(
+                new { ProductId = p1Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+                new { ProductId = p2Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+                new { ProductId = p3Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+                new { ProductId = p4Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+                new { ProductId = p5Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+                new { ProductId = p6Id, WarehouseId = warehouseAId, StockQuantity = 100 },
+
+                new { ProductId = p1Id, WarehouseId = warehouseBId, StockQuantity = 50 },
+                new { ProductId = p2Id, WarehouseId = warehouseBId, StockQuantity = 50 },
+                new { ProductId = p3Id, WarehouseId = warehouseBId, StockQuantity = 50 },
+                new { ProductId = p4Id, WarehouseId = warehouseBId, StockQuantity = 50 },
+                new { ProductId = p5Id, WarehouseId = warehouseBId, StockQuantity = 50 },
+                new { ProductId = p6Id, WarehouseId = warehouseBId, StockQuantity = 50 }
+            );
+
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

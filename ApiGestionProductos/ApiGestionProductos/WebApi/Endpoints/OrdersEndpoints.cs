@@ -100,6 +100,25 @@ namespace WebApi.Endpoints
             .Produces(StatusCodes.Status400BadRequest)
             .Produces(StatusCodes.Status500InternalServerError);
 
+            // Reanudar Orden
+            group.MapPut("/{id:guid}/resume", async (Guid id, Guid userId, UpdateSurtidoUseCase useCase) =>
+            {
+                try
+                {
+                    var order = await useCase.ResumeOrderAsync(id, userId);
+                    return Results.Ok(order);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.BadRequest(new { error = ex.Message });
+                }
+            })
+            .WithName("ResumeOrder")
+            .WithSummary("Cambia el estado de la orden de Pausa a En Surtido.")
+            .Produces<OrderResponseDto>(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status400BadRequest)
+            .Produces(StatusCodes.Status500InternalServerError);
+
             // Obtener Detalle de Orden
             group.MapGet("/{id:guid}", async (Guid id, GetOrderDetailsUseCase useCase) =>
             {
