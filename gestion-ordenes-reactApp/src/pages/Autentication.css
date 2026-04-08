@@ -1,0 +1,119 @@
+.auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.auth_container {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth_icon_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.auth_title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.auth_description {
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+.auth_form_group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.auth_label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.auth_input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.auth_input:focus {
+    border-color: #111827;
+}
+
+.auth_button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #111827;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.auth_button:hover {
+    background: #1f2937;
+}
+
+.auth_footer {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.auth_link {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth_link:hover {
+    text-decoration: underline;
+}
+
+.auth_show_password {
+    display: flex;
+    align-items: center;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.auth_checkbox_label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    cursor: pointer;
+    user-select: none;
+}
+
+.auth_checkbox_label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}

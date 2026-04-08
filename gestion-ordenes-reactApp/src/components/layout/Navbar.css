@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.navbar_logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.navbar_user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar_user_name {
+    color: #4b5563;
+    font-weight: 500;
+}
