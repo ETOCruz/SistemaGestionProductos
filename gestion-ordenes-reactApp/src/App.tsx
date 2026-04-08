@@ -11,6 +11,7 @@ const LazyGenerarOrdenes = lazy(() => import('@pages/salesUser/GenerarOrdenes.js
 const LazyStadoOrdenes = lazy(() => import('@pages/salesUser/StadoOrdenes.jsx'))
 const LazyRecepcionOrdenes = lazy(() => import('@pages/warehouseUser/RecepcionOrdenes.jsx'))
 const LazyDespachoOrden = lazy(() => import('@pages/warehouseUser/DespachoOrden.jsx'))
+const LazyRecepcionInventario = lazy(() => import('@pages/warehouseUser/RecepcionInventario.jsx'))
 
 function App() {
 
@@ -60,6 +61,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <LazyDespachoOrden />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bodega/inventario"
+            element={
+              <ProtectedRoute>
+                <LazyRecepcionInventario />
               </ProtectedRoute>
             }
           />

@@ -37,3 +37,25 @@ export async function getProductByBarcode(barcode) {
         throw error;
     }
 }
+
+export async function addProductStock(productId, quantityToAdd) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/products/${productId}/add-stock`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ quantityToAdd: parseInt(quantityToAdd, 10) })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Error al actualizar el stock');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
