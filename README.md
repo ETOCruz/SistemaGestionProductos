@@ -60,7 +60,13 @@ Navega a la carpeta del frontend y ejecuta:
 pnpm install
 ```
 
-### 3. Ejecución
+### 3. Configuración de Variables de Entorno
+Antes de ejecutar la aplicación, es necesario configurar las variables de entorno para que el frontend pueda comunicarse con la API:
+
+1. Crea un archivo llamado `.env` en la raíz de la carpeta `gestion-ordenes-reactApp` (puedes duplicar el archivo `.env.example` y renombrarlo).
+2. Asegúrate de que `VITE_API_GESTION_ORDENES` apunte a la URL de tu API de .NET (por defecto suele ser `https://localhost:7008/api/v1`).
+
+### 4. Ejecución
 Para iniciar el servidor de desarrollo:
 ```bash
 pnpm run dev
