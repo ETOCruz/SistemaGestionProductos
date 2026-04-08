@@ -1,33 +1,85 @@
-# SistemaGestionProductos
-Desarrollar un sistema básico que permita gestionar órdenes de productos desde su creación hasta su proceso de surtido dentro de un almacén.
+# Sistema de Gestión de Productos
 
-# ApiGestionProductos NET C#
+Este proyecto es una solución integral para gestionar órdenes de productos, desde su creación hasta el proceso de surtido en almacén. La arquitectura se divide en un backend robusto con .NET y un frontend reactivo con React + Vite.
 
-## Migracion Entity Framework
+## Guía de Inicio Rápido: Backend (ApiGestionProductos)
 
-Verificar que se tenga instalado las dependencias del proyecto WebApi:
-- Microsoft.EntityFrameworkCore.Design 
+Para poner en marcha el backend por primera vez, sigue estos pasos:
 
-Verificar que en se tengan instalados las dependencias en el proyecto Data:
-- Microsoft.EntityFrameworkCore
-- Microsoft.EntityFrameworkCore.Design
-- Microsoft.EntityFrameworkCore.SqlServer
+### 1. Requisitos Previos
+Asegúrate de tener instalado:
+- [.NET 9 SDK](https://dotnet.microsoft.com/download) (o la versión actual del proyecto)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) o LocalDB (instalado con Visual Studio)
+- Herramientas de Entity Framework Core
 
-
-Comandos utilizados:
-
-Instalación de dotnet-ef de manrea global, necesario para ejecutar comandos de Entity Framework:
-```cmd
+### 2. Instalación de Herramientas EF
+Si aún no tienes las herramientas globales de Entity Framework, instálalas con el siguiente comando:
+```bash
 dotnet tool install --global dotnet-ef
 ```
 
-Creación de migración inicial:
+### 3. Configuración de la Base de Datos
+1. Dirígete al archivo `ApiGestionProductos/ApiGestionProductos/WebApi/appsettings.json`.
+2. Verifica o actualiza la cadena de conexión `DefaultConnection` para que apunte a tu instancia local de SQL Server.
 
-```cmd
-dotnet ef migrations add InitialCreate --project Data --startup-project WebApi
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=SistemaGestionProductosDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
 ```
 
-Aplicar migraciones pendientes a la base de datos:
-```cmd
+### 4. Ejecución de Migraciones
+Para crear la base de datos y aplicar el esquema inicial, abre una terminal en la carpeta principal del backend (`ApiGestionProductos/ApiGestionProductos`) y ejecuta:
+
+> [!IMPORTANT]
+> Es crucial ejecutar los comandos desde el directorio raíz de la solución donde se encuentran las carpetas `Data` y `WebApi`.
+
+#### Aplicar migraciones existentes:
+```bash
 dotnet ef database update --project Data --startup-project WebApi
 ```
+
+#### ¿Cómo crear una nueva migración? (Opcional)
+Si realizas cambios en los modelos del dominio:
+```bash
+dotnet ef migrations add NombreDeLaMigracion --project Data --startup-project WebApi
+```
+
+---
+
+## Guía de Inicio: Frontend (gestion-ordenes-reactApp)
+
+### 1. Requisitos Previos
+Asegúrate de tener instalado:
+- [Node.js](https://nodejs.org/) (versión 16 o superior)
+- [pnpm](https://pnpm.io/) (gestor de paquetes)
+
+### 2. Instalación
+Navega a la carpeta del frontend y ejecuta:
+```bash
+pnpm install
+```
+
+### 3. Ejecución
+Para iniciar el servidor de desarrollo:
+```bash
+pnpm run dev
+```
+
+### Inicio de sesión
+
+Rol Ventas
+
+Usuario: sales1
+Contraseña: 1234
+
+Rol Jefe de Almacén
+
+Usuario: admin1
+Contraseña: 1234
+
+
+## Tecnologías Utilizadas
+- **Backend**: .NET 9, EF Core, Clean Architecture.
+- **Frontend**: React 19, Vite, TypeScript.
+- **Base de Datos**: SQL Server.
