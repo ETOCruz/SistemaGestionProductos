@@ -9,7 +9,7 @@ export function OrderSummary() {
     const { cart, removeFromCart, updateQuantity, clearCart } = useContext(CartContext)
     const { user } = useAuth()
     const { showLoader, hideLoader } = useLoader()
-    
+
     const [stockWarnings, setStockWarnings] = useState([])
     const [successMessage, setSuccessMessage] = useState('')
     const [error, setError] = useState('')
@@ -18,16 +18,16 @@ export function OrderSummary() {
 
     const handleValidateStock = async () => {
         if (cart.length === 0) return
-        
+
         setError('')
         setStockWarnings([])
         setSuccessMessage('')
         showLoader()
-        
+
         try {
             const items = cart.map(item => ({ productId: item.id, quantity: item.quantity }))
             const response = await validateStock(items)
-            
+
             if (response.isAvailable) {
                 setSuccessMessage('¡Todos los productos tienen stock disponible!')
             } else {
@@ -43,16 +43,16 @@ export function OrderSummary() {
 
     const handleCreateOrder = async () => {
         if (cart.length === 0) return
-        
+
         setError('')
         setStockWarnings([])
         setSuccessMessage('')
         showLoader()
-        
+
         try {
             const items = cart.map(item => ({ productId: item.id, quantity: item.quantity }))
             const response = await createOrder(user?.id, items)
-            
+
             setSuccessMessage(`¡Orden creada exitosamente! Folio: ${response.folio || response.id}`)
             clearCart() // Vaciamos el carrito tras crear la orden
         } catch (err) {
@@ -77,7 +77,7 @@ export function OrderSummary() {
     return (
         <div className="order-summary">
             <h2 className="order-summary__title">Resumen de la Orden</h2>
-            
+
             <div className="order-items">
                 {cart.map(item => (
                     <div key={item.id} className="order-item">
@@ -86,14 +86,33 @@ export function OrderSummary() {
                             <p className="order-item__price">${item.price ? item.price.toFixed(2) : '0.00'}</p>
                         </div>
                         <div className="order-item__actions">
-                            <input 
-                                type="number" 
+                            <input
+                                type="number"
                                 min="1"
+                                max="100"
+                                title="Máximo 100 unidades por producto"
                                 className="order-item__qty"
                                 value={item.quantity}
-                                onChange={(e) => updateQuantity(item.id, e.target.value)}
+                                onChange={(e) => {
+                                    const valStr = e.target.value;
+                                    if (valStr === '') {
+                                        updateQuantity(item.id, '');
+                                        return;
+                                    }
+                                    let val = parseInt(valStr, 10);
+                                    if (!isNaN(val)) {
+                                        if (val > 100) val = 100;
+                                        updateQuantity(item.id, val);
+                                    }
+                                }}
+                                onBlur={(e) => {
+                                    const val = parseInt(e.target.value, 10);
+                                    if (isNaN(val) || val < 1) {
+                                        updateQuantity(item.id, 1);
+                                    }
+                                }}
                             />
-                            <button 
+                            <button
                                 className="order-item__remove"
                                 onClick={() => removeFromCart(item.id)}
                             >
@@ -124,15 +143,15 @@ export function OrderSummary() {
                 )}
 
                 {error && <p style={{ color: '#ef4444', marginBottom: '1rem' }}>{error}</p>}
-                
+                {successMessage && <p style={{ color: '#059669', marginBottom: '1rem', fontWeight: '600', backgroundColor: '#ecfdf5', padding: '0.5rem', borderRadius: '8px', border: '1px solid #10b981' }}>✅ {successMessage}</p>}
                 <div className="order-summary__buttons">
-                    <button 
+                    <button
                         className="order-summary__btn order-summary__btn--secondary"
                         onClick={handleValidateStock}
                     >
                         Validar Stock
                     </button>
-                    <button 
+                    <button
                         className="order-summary__btn order-summary__btn--primary"
                         onClick={handleCreateOrder}
                     >

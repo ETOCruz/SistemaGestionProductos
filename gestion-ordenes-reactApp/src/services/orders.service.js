@@ -67,3 +67,90 @@ export async function getAllOrders({ status, pageNumber = 1, pageSize = 10 }) {
         throw error;
     }
 }
+
+export async function getOrderById(orderId) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders/${orderId}`, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Error al obtener los detalles de la orden');
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+
+export async function authorizeOrder(orderId, userId) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders/${orderId}/authorize?userId=${userId}`, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' }
+        });
+        
+        let data;
+        try {
+            data = await response.json();
+        } catch(e) {}
+        
+        if (!response.ok) {
+            const err = new Error(data?.message || 'Error al intentar autorizar la orden por falta de stock o inventario.');
+            err.missingProducts = data?.missingProducts || [];
+            throw err;
+        }
+        return data;
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+
+export async function scanProduct(orderId, barcode, quantity) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders/${orderId}/scan`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ barcode, quantity })
+        });
+        
+        if (!response.ok) {
+            let data;
+            try { data = await response.json(); } catch(e) {}
+            throw new Error(data?.error || 'Error al escanear el producto.');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+
+export async function pauseOrder(orderId, userId) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders/${orderId}/pause?userId=${userId}`, {
+            method: 'PUT',
+            headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Error al pausar la orden');
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+
+export async function resumeOrder(orderId, userId) {
+    try {
+        const response = await fetchWithIntercept(`${API_BASE_URL}/orders/${orderId}/resume?userId=${userId}`, {
+            method: 'PUT',
+            headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Error al reanudar la orden');
+        return await response.json();
+    } catch (error) {
+        console.error('API Error:', error);
+        throw error;
+    }
+}
+

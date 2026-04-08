@@ -57,7 +57,9 @@ export default function GenerarOrdenes() {
             <main className="generar-ordenes">
                 <div className="generar-ordenes__header">
                     <h1 className="generar-ordenes__title">Nueva Orden de Servicio</h1>
-                    <p className="generar-ordenes__subtitle">Busca productos y agrégalos a la orden actual</p>
+                    <p className="generar-ordenes__subtitle">
+                        Busca productos y agrégalos a la orden actual
+                    </p>
                 </div>
 
                 <div className="generar-ordenes__grid">
@@ -68,6 +70,10 @@ export default function GenerarOrdenes() {
 
                         <ProductList products={searchResults} />
                     </div>
+
+                    <span style={{ display: 'block', margin: '0.5rem auto 0', fontSize: '1rem', color: '#fbbf24', backgroundColor: '#fffbeb', padding: '0.2rem 0.8rem', borderRadius: '12px', width: 'fit-content', border: '1px solid #fef3c7' }}>
+                        ℹ️ Regla operativa: Requisa máxima de 100 unidades por producto.
+                    </span>
 
                     <aside className="generar-ordenes__sidebar">
                         <OrderSummary />

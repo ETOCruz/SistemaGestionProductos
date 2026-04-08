@@ -16,9 +16,9 @@ function useCartReducer() {
         payload: product
     })
 
-    const updateQuantity = (product, quantity) => dispatch({
+    const updateQuantity = (id, quantity) => dispatch({
         type: CART_ACTION_TYPES.UPDATE_QUANTITY,
-        payload: { ...product, quantity }
+        payload: { id, quantity }
     })
 
     const clearCart = () => dispatch({

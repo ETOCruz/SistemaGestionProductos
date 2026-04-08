@@ -9,6 +9,8 @@ const LazyHomePage = lazy(() => import('@pages/Home.jsx'))
 const LazyAutentication = lazy(() => import('@pages/Autentication.jsx'))
 const LazyGenerarOrdenes = lazy(() => import('@pages/salesUser/GenerarOrdenes.jsx'))
 const LazyStadoOrdenes = lazy(() => import('@pages/salesUser/StadoOrdenes.jsx'))
+const LazyRecepcionOrdenes = lazy(() => import('@pages/warehouseUser/RecepcionOrdenes.jsx'))
+const LazyDespachoOrden = lazy(() => import('@pages/warehouseUser/DespachoOrden.jsx'))
 
 function App() {
 
@@ -42,6 +44,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <LazyStadoOrdenes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bodega/ordenes"
+            element={
+              <ProtectedRoute>
+                <LazyRecepcionOrdenes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bodega/ordenes/:id"
+            element={
+              <ProtectedRoute>
+                <LazyDespachoOrden />
               </ProtectedRoute>
             }
           />

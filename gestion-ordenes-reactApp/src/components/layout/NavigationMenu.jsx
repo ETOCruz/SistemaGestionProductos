@@ -14,7 +14,7 @@ export const NavigationMenu = () => {
             { path: '/ventas/generar-orden', label: 'Generar Orden' },
             { path: '/ventas/ordenes', label: 'Mis Órdenes' }
         ],
-        'warehouse-user': [
+        'warehouse-manager': [
             { path: '/', label: 'Inicio' },
             { path: '/bodega/ordenes', label: 'Recepción de Órdenes' },
             { path: '/bodega/inventario', label: 'Inventario' }
@@ -33,9 +33,9 @@ export const NavigationMenu = () => {
                 {links.map((link) => {
                     const isActive = location.pathname === link.path;
                     return (
-                        <Link 
-                            key={link.path} 
-                            to={link.path} 
+                        <Link
+                            key={link.path}
+                            to={link.path}
                             className={`nav-link ${isActive ? 'active' : ''}`}
                         >
                             {link.label}

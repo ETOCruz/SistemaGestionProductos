@@ -59,7 +59,7 @@ export default function Autentication() {
                             <input
                                 name="username"
                                 type="username"
-                                placeholder="tu@ejemplo.com"
+                                placeholder="Nickname"
                                 className="auth_input"
                                 required
                             />
