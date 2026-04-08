@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5173';
+const API_URL = import.meta.env.VITE_APP_URL || 'http://localhost:5173';
 
 const ERROR_MESSAGES = {
     USER_NOT_FOUND: 'Usuario o contraseña incorrectos',

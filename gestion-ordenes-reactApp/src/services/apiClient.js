@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://localhost:7008/api/v1';
+export const API_BASE_URL = import.meta.env.VITE_API_GESTION_ORDENES || 'https://localhost:7008/api/v1';
 
 /**
  * Un wrapper de `fetch` para interceptar errores de red
