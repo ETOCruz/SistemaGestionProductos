@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using Application.DTOs.Products;
+
 namespace Application.UseCase.Products
 {
     public class CreateProductUseCase
@@ -19,7 +21,7 @@ namespace Application.UseCase.Products
             _repository = repository;
         }
 
-        public async Task<ProductEntity> ExecuteAsync(CreateProductDto dto)
+        public async Task<ProductResponseDto> ExecuteAsync(CreateProductDto dto)
         {
             if (await _codeRepository.ExistsWithCodeAsync(dto.Barcode))
             {
@@ -30,7 +32,7 @@ namespace Application.UseCase.Products
             await _repository.AddAsync(product);
             await _repository.SaveChangesAsync();
 
-            return product;
+            return ProductResponseDto.FromEntity(product);
         }
 
     }

@@ -9,7 +9,7 @@ POST {{WebApi_HostAddress}}{{ProductsEndpoints}}
 Content-Type: application/json
 
 {
-  "barcode": "123456789",
+  "barcode": "123456790",
   "price": 25.50,
   "name": "Naranjas Valencianas",
   "productQuantity": 100,
@@ -36,17 +36,17 @@ GET {{WebApi_HostAddress}}{{ProductsEndpoints}}/search?categoryId=1&pageNumber=1
 Accept: application/json
 
 ### 6. PRODUCTOS: Actualizar un producto existente
-PUT {{WebApi_HostAddress}}{{ProductsEndpoints}}/3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC
+PUT {{WebApi_HostAddress}}{{ProductsEndpoints}}/46f3f79d-0488-4f61-abcd-517cce578cd4
 Content-Type: application/json
 
 {
-  "id": "3FEF1B0E-1FBF-4F77-AE32-E5828CDD7FEC",
+  "id": "46f3f79d-0488-4f61-abcd-517cce578cd4",
   "barcode": "123456789",
-  "price": 27.00,
-  "name": "Naranjas Premium",
+  "name": "Asus Vivobook",
   "productQuantity": 150,
-  "productDescription": "Fruta seleccionada de alta calidad",
-  "subCategoryId": 1
+  "productDescription": "The ASUS Vivobook is a versatile",
+  "price": 25.50,
+  "subCategoryId": 2
 }
 
 ### 7. PRODUCTOS: Eliminar un producto

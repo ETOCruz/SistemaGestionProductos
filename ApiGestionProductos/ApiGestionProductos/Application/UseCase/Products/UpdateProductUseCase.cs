@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using Application.DTOs.Products;
+
 namespace Application.UseCase.Products
 {
     public class UpdateProductUseCase
@@ -15,7 +17,7 @@ namespace Application.UseCase.Products
         {
             _repository = repository;
         }
-        public async Task<ProductEntity> ExecuteAsync(UpdateProductDto dto)
+        public async Task<ProductResponseDto> ExecuteAsync(UpdateProductDto dto)
         {
             var product = await _repository.GetByIdAsync(dto.Id);
 
@@ -29,7 +31,8 @@ namespace Application.UseCase.Products
             await _repository.UpdateAsync(product);
             await _repository.SaveChangesAsync();
 
-            return await _repository.GetByIdAsync(product.Id) ?? product;
+            var updatedProduct = await _repository.GetByIdAsync(product.Id) ?? product;
+            return ProductResponseDto.FromEntity(updatedProduct);
         }
 
     }

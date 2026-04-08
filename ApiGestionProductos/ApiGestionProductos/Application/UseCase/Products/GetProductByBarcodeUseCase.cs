@@ -1,8 +1,10 @@
-﻿using Domain;
+using Domain;
 using Domain.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using Application.DTOs.Products;
 
 namespace Application.UseCase.Products
 {
@@ -15,7 +17,7 @@ namespace Application.UseCase.Products
             _codeRepository = codeRepository;
         }
 
-        public async Task<ProductEntity> ExecuteAsync(string barcode)
+        public async Task<ProductResponseDto> ExecuteAsync(string barcode)
         {
             var product = await _codeRepository.GetByCodeAsync(barcode);
 
@@ -24,7 +26,7 @@ namespace Application.UseCase.Products
                 throw new InvalidOperationException($"No se encontró una producto con el código: {barcode}");
             }
 
-            return product;
+            return ProductResponseDto.FromEntity(product);
         }
     }
 }

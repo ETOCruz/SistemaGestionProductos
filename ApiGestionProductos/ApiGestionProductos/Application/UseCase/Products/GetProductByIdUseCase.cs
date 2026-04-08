@@ -1,8 +1,10 @@
-﻿using Domain;
+using Domain;
 using Domain.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using Application.DTOs.Products;
 
 namespace Application.UseCase.Products
 {
@@ -14,7 +16,7 @@ namespace Application.UseCase.Products
         {
             _repository = repository;
         }
-        public async Task<ProductEntity> ExecuteAsync(Guid id)
+        public async Task<ProductResponseDto> ExecuteAsync(Guid id)
         {
             var product = await _repository.GetByIdAsync(id);
 
@@ -23,7 +25,7 @@ namespace Application.UseCase.Products
                 throw new InvalidOperationException($"No se encontró una producto con el Id: {id}");
             }
 
-            return product;
+            return ProductResponseDto.FromEntity(product);
         }
     }
 }

@@ -22,18 +22,7 @@ namespace Application.UseCase.Products
         {
             var (items, totalCount) = await _repository.GetPagedAsync(pageNumber, pageSize);
             
-            var dtos = items.Select(p => new ProductResponseDto
-            {
-                Id = p.Id,
-                Barcode = p.Barcode,
-                Name = p.Name,
-                Description = p.ProductDescription,
-                Price = p.Price,
-                SubCategoryId = p.SubCategoryId,
-                SubCategoryName = p.SubCategory?.Name ?? "N/A",
-                CategoryId = p.SubCategory?.Category?.Id,
-                CategoryName = p.SubCategory?.Category?.Name ?? "N/A"
-            });
+            var dtos = items.Select(ProductResponseDto.FromEntity);
 
             return new PagedResponseDto<ProductResponseDto>(dtos, totalCount, pageNumber, pageSize);
         }
