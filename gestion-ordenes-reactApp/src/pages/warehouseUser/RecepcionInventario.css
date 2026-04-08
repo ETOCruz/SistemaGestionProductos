@@ -1,0 +1,205 @@
+.inventario-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.inventario-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.inventario-header h1 {
+    font-size: 2.25rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.inventario-header p {
+    color: #6b7280;
+    font-size: 1.1rem;
+}
+
+.inventario-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+/* Scanner Section */
+.scanner-section label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.scanner-input {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+    background-color: #f9fafb;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.scanner-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.btn-scan {
+    width: 100%;
+    background-color: #10b981;
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+}
+
+.btn-scan:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+}
+
+/* Product Entry Section */
+.product-info-badge {
+    background-color: #f3f4f6;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 5px solid #4f46e5;
+}
+
+.product-info-badge h3 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.product-barcode {
+    color: #6b7280;
+    font-family: monospace;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.product-stock {
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.entry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.quantity-input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+}
+
+.form-actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-cancel {
+    background-color: white;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #f9fafb;
+    color: #374151;
+}
+
+.btn-massive--primary {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+}
+
+.btn-massive--primary:hover {
+    background-color: #4338ca;
+    transform: translateY(-1px);
+}
+
+/* Alerts */
+.action-alert {
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    border-left: 4px solid;
+}
+
+.action-alert--error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-color: #ef4444;
+}
+
+.action-alert--success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border-color: #22c55e;
+}
+
+@media (max-width: 640px) {
+    .form-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .inventario-card {
+        padding: 1.5rem;
+    }
+}
